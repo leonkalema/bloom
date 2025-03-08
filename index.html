@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Bloom Filter Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .metrics {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Bloom Filter Demo</h1>
+    
+    <div>
+        <h2>Add Items</h2>
+        <input type="text" id="add-input" placeholder="Enter an item to add">
+        <button id="add-button">Add to Filter</button>
+        <button id="add-async-button">Add Async</button>
+    </div>
+    
+    <div>
+        <h2>Check Membership</h2>
+        <input type="text" id="check-input" placeholder="Enter an item to check">
+        <button id="check-button">Check Filter</button>
+        <button id="check-async-button">Check Async</button>
+        <div class="result" id="check-result"></div>
+    </div>
+    
+    <div>
+        <h2>Stress Test</h2>
+        <button id="stress-test-button">Add 10,000 Random Items</button>
+        <div class="result" id="stress-test-result"></div>
+    </div>
+    
+    <div>
+        <h2>Compression</h2>
+        <button id="compress-button">Force Compression</button>
+        <div class="result" id="compress-result"></div>
+    </div>
+    
+    <div>
+        <h2>Reset Filter</h2>
+        <button id="reset-button">Reset Filter</button>
+    </div>
+    
+    <div class="metrics">
+        <h2>Performance Metrics</h2>
+        <button id="metrics-button">Show Metrics</button>
+        <pre id="metrics-output"></pre>
+    </div>
+    
+    <script src="adaptive-bloom-filter.js"></script>
+    <script>
+        // Create a new bloom filter with 50,000 expected items and 0.5% false positive rate
+        const filter = new AdaptiveBloomFilter(50000, 0.005);
+        
+        // Add item functionality
+        document.getElementById('add-button').addEventListener('click', () => {
+            const input = document.getElementById('add-input');
+            const item = input.value.trim();
+            
+            if (item) {
+                filter.add(item);
+                input.value = '';
+                updateMetrics();
+                
+                const result = document.getElementById('check-result');
+                result.textContent = `Added: ${item}`;
+            }
+        });
+        
+        // Add async functionality
+        document.getElementById('add-async-button').addEventListener('click', async () => {
+            const input = document.getElementById('add-input');
+            const item = input.value.trim();
+            
+            if (item) {
+                await filter.addAsync(item);
+                input.value = '';
+                updateMetrics();
+                
+                const result = document.getElementById('check-result');
+                result.textContent = `Added asynchronously: ${item}`;
+            }
+        });
+        
+        // Check functionality
+        document.getElementById('check-button').addEventListener('click', () => {
+            const input = document.getElementById('check-input');
+            const item = input.value.trim();
+            
+            if (item) {
+                const exists = filter.check(item);
+                const result = document.getElementById('check-result');
+                
+                result.textContent = exists 
+                    ? `✅ "${item}" is in the filter` 
+                    : `❌ "${item}" is NOT in the filter`;
+                
+                updateMetrics();
+            }
+        });
+        
+        // Check async functionality
+        document.getElementById('check-async-button').addEventListener('click', async () => {
+            const input = document.getElementById('check-input');
+            const item = input.value.trim();
+            
+            if (item) {
+                const exists = await filter.checkAsync(item);
+                const result = document.getElementById('check-result');
+                
+                result.textContent = exists 
+                    ? `✅ "${item}" is in the filter (async check)` 
+                    : `❌ "${item}" is NOT in the filter (async check)`;
+                
+                updateMetrics();
+            }
+        });
+        
+        // Stress test
+        document.getElementById('stress-test-button').addEventListener('click', async () => {
+            const result = document.getElementById('stress-test-result');
+            result.textContent = 'Adding 10,000 random items...';
+            
+            // Disable buttons during the test
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => button.disabled = true);
+            
+            setTimeout(async () => {
+                const startTime = performance.now();
+                
+                // Generate and add 10,000 random items
+                for (let i = 0; i < 10000; i++) {
+                    const randomItem = `item-${Math.random().toString(36).substring(2, 15)}`;
+                    filter.add(randomItem);
+                    
+                    // Update progress every 1000 items
+                    if (i % 1000 === 0) {
+                        result.textContent = `Adding items: ${i}/10000`;
+                        // Allow the UI to update
+                        await new Promise(resolve => setTimeout(resolve, 0));
+                    }
+                }
+                
+                const endTime = performance.now();
+                const duration = ((endTime - startTime) / 1000).toFixed(2);
+                
+                result.textContent = `Added 10,000 random items in ${duration} seconds`;
+                updateMetrics();
+                
+                // Re-enable buttons
+                buttons.forEach(button => button.disabled = false);
+            }, 50); // Small delay to allow UI to update first
+        });
+        
+        // Compression
+        document.getElementById('compress-button').addEventListener('click', () => {
+            const compressed = filter.compress();
+            const result = document.getElementById('compress-result');
+            
+            result.textContent = compressed 
+                ? `✅ Filter was successfully compressed` 
+                : `ℹ️ No compression was needed or possible`;
+            
+            updateMetrics();
+        });
+        
+        // Reset
+        document.getElementById('reset-button').addEventListener('click', () => {
+            filter.reset();
+            document.getElementById('check-result').textContent = '';
+            document.getElementById('stress-test-result').textContent = '';
+            document.getElementById('compress-result').textContent = '';
+            
+            alert('Bloom filter has been reset');
+            updateMetrics();
+        });
+        
+        // Metrics
+        document.getElementById('metrics-button').addEventListener('click', () => {
+            updateMetrics();
+        });
+        
+        function updateMetrics() {
+            const metrics = filter.getMetrics();
+            const output = document.getElementById('metrics-output');
+            
+            output.textContent = JSON.stringify(metrics, null, 2);
+        }
+        
+        // Initial metrics update
+        updateMetrics();
+    </script>
+</body>
+</html>
