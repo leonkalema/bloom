@@ -24,10 +24,10 @@ Real companies use bloom filters for:
 npm install adaptive-bloom-filter
 
 # Or download directly
-curl -O https://raw.githubusercontent.com/leonkalema/bloom/main/adaptive-bloom-filter.js
+curl -O https://raw.githubusercontent.com/leonkalema/bloom/main/src/index.js
 
 # Or use CDN
-<script src="https://cdn.jsdelivr.net/gh/leonkalema/bloom@main/adaptive-bloom-filter.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/leonkalema/bloom@main/src/index.js"></script>
 ```
 
 ```javascript

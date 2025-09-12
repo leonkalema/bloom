@@ -1,8 +1,8 @@
 {
   "name": "adaptive-bloom-filter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fast, memory-efficient bloom filter with adaptive compression and async operations for JavaScript",
-  "main": "adaptive-bloom-filter.js",
+  "main": "src/index.js",
   "keywords": [
     "bloom-filter",
     "probabilistic",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leonkalema/bloom.git"
+    "url": "git+https://github.com/leonkalema/bloom.git"
   },
   "homepage": "https://github.com/leonkalema/bloom#readme",
   "bugs": {
@@ -33,16 +33,16 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "browser": "adaptive-bloom-filter.js",
+  "browser": "src/index.js",
   "files": [
-    "adaptive-bloom-filter.js",
+    "src/",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "test": "node test-bloom-filter.js",
-    "demo": "node -e \"const filter = require('./adaptive-bloom-filter.js'); const f = new filter(1000, 0.01); f.add('test'); console.log('Works:', f.check('test'));\"",
-    "benchmark": "node -e \"const filter = require('./adaptive-bloom-filter.js'); const f = new filter(100000, 0.01); console.time('Add 10k items'); for(let i=0; i<10000; i++) f.add('item-'+i); console.timeEnd('Add 10k items');\""
+    "demo": "node -e \"const { AdaptiveBloomFilter } = require('./src/index.js'); const f = new AdaptiveBloomFilter(1000, 0.01); f.add('test'); console.log('Works:', f.check('test'));\"",
+    "benchmark": "node -e \"const { AdaptiveBloomFilter } = require('./src/index.js'); const f = new AdaptiveBloomFilter(100000, 0.01); console.time('Add 10k items'); for(let i=0; i<10000; i++) f.add('item-'+i); console.timeEnd('Add 10k items');\""
   },
   "devDependencies": {},
   "dependencies": {}

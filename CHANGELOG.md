@@ -2,7 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2025-01-12
+## [1.1.0] - 2024-01-15
+
+### Added
+- Auto-scaling capability for dynamic filter resizing
+- Time-to-live (TTL) support for item expiration
+- Union and intersection operations for combining filters
+- Memory pool management for efficient filter reuse
+- Unique count estimation based on bit array occupancy
+- Serialization and deserialization for state persistence
+- Batch operations for high-performance bulk processing
+- Enhanced metrics tracking including auto-scale events
+
+### Changed
+- Module now exports both AdaptiveBloomFilter and BloomFilterPool classes
+- Improved union/intersection operations with proper bit array handling
+- Enhanced test suite with 17 comprehensive test cases
+
+## [1.0.0] - 2024-01-15
 
 ### Added
 - Initial release of adaptive bloom filter
