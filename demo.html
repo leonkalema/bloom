@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Advanced Bloom Filter for JavaScript - Interactive Demo | Fast, Memory-Efficient Data Structure</title>
+    <meta name="description" content="Interactive demo of a production-ready bloom filter with auto-scaling, TTL expiration, and enterprise features. Perfect for caching, deduplication, and high-performance applications.">
+    <meta name="keywords" content="bloom filter, javascript, data structure, performance, caching, deduplication, memory efficient, probabilistic">
+    <meta name="author" content="Leon Kalema">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Advanced Bloom Filter for JavaScript - Interactive Demo">
+    <meta property="og:description" content="Production-ready bloom filter with enterprise features: auto-scaling, TTL, union/intersection operations, and more.">
+    <meta property="og:url" content="https://leonkalema.github.io/bloom/">
+    <meta property="og:site_name" content="Adaptive Bloom Filter">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Advanced Bloom Filter for JavaScript">
+    <meta name="twitter:description" content="Interactive demo of enterprise-grade bloom filter with auto-scaling and TTL features.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://leonkalema.github.io/bloom/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Adaptive Bloom Filter",
+        "description": "Advanced bloom filter for JavaScript with enterprise features",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "programmingLanguage": "JavaScript",
+        "author": {
+            "@type": "Person",
+            "name": "Leon Kalema"
+        },
+        "url": "https://leonkalema.github.io/bloom/",
+        "downloadUrl": "https://www.npmjs.com/package/adaptive-bloom-filter",
+        "codeRepository": "https://github.com/leonkalema/bloom"
+    }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">🚀 Advanced Bloom Filter</h1>
+                    <p class="text-gray-600 mt-1">Production-ready JavaScript implementation with enterprise features</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/leonkalema/bloom" 
+                       class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2"
+                       target="_blank" rel="noopener">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.npmjs.com/package/adaptive-bloom-filter" 
+                       class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2"
+                       target="_blank" rel="noopener">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <span>NPM</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- What is a Bloom Filter? -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">What is a Bloom Filter?</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-700 mb-4">
+                        A <strong>Bloom Filter</strong> is a space-efficient probabilistic data structure that tests whether an element is in a set. 
+                        It can have <strong>false positives</strong> but never false negatives.
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+                        <p class="text-blue-800">
+                            <strong>Key Benefit:</strong> Uses only a few KB to track millions of items with 99%+ accuracy
+                        </p>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Perfect for:</h3>
+                    <ul class="text-gray-700 space-y-1">
+                        <li>• <strong>Caching:</strong> Check if data exists before expensive lookups</li>
+                        <li>• <strong>Deduplication:</strong> Filter duplicate emails, URLs, or records</li>
+                        <li>• <strong>Security:</strong> Block malicious IPs or domains</li>
+                        <li>• <strong>Databases:</strong> Avoid disk reads for non-existent keys</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-gray-900 mb-3">Enterprise Features</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">Auto-scaling</span>
+                            <span class="text-gray-600 text-sm">Dynamically resize as data grows</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">TTL Expiration</span>
+                            <span class="text-gray-600 text-sm">Items expire after configurable time</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-medium">Set Operations</span>
+                            <span class="text-gray-600 text-sm">Union and intersection of filters</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">Memory Pool</span>
+                            <span class="text-gray-600 text-sm">Efficient filter reuse and management</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm font-medium">Compression</span>
+                            <span class="text-gray-600 text-sm">RLE compression for sparse data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Start</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Install via NPM</h3>
+                    <pre class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto">npm install adaptive-bloom-filter</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Basic Usage</h3>
+                    <pre class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto">const { AdaptiveBloomFilter } = require('adaptive-bloom-filter');
+const filter = new AdaptiveBloomFilter(10000, 0.01);
+filter.add('user-123');
+console.log(filter.check('user-123')); // true</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Interactive Demo</h2>
+            
+            <!-- Basic Operations -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Operations</h3>
+                <div class="flex flex-wrap gap-4 mb-4">
+                    <input type="text" id="add-input" placeholder="Enter item to add (e.g., user-123)" 
+                           class="flex-1 min-w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button id="add-button" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Add Item
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-4 mb-4">
+                    <input type="text" id="check-input" placeholder="Enter item to check" 
+                           class="flex-1 min-w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button id="check-button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Check Item
+                    </button>
+                </div>
+                <div id="basic-result" class="min-h-12"></div>
+            </div>
+
+            <!-- Real-World Examples -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Real-World Examples</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <button id="cache-demo" class="bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                        🚀 Cache Simulation
+                    </button>
+                    <button id="dedup-demo" class="bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                        📧 Email Deduplication
+                    </button>
+                    <button id="security-demo" class="bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 transition-colors">
+                        🛡️ Security Filter
+                    </button>
+                </div>
+                <div id="example-result" class="min-h-24"></div>
+            </div>
+
+            <!-- Advanced Features -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Advanced Features</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                    <button id="auto-scale-demo" class="bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                        📈 Auto-scaling
+                    </button>
+                    <button id="ttl-demo" class="bg-yellow-600 text-white px-4 py-3 rounded-lg hover:bg-yellow-700 transition-colors">
+                        ⏰ TTL Expiration
+                    </button>
+                    <button id="batch-demo" class="bg-pink-600 text-white px-4 py-3 rounded-lg hover:bg-pink-700 transition-colors">
+                        📦 Batch Operations
+                    </button>
+                    <button id="union-demo" class="bg-teal-600 text-white px-4 py-3 rounded-lg hover:bg-teal-700 transition-colors">
+                        🔗 Union/Intersection
+                    </button>
+                </div>
+                <div id="advanced-result" class="min-h-24"></div>
+            </div>
+
+            <!-- Performance Tests -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Performance Benchmarks</h3>
+                <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                    <button id="stress-test" class="bg-orange-600 text-white px-4 py-3 rounded-lg hover:bg-orange-700 transition-colors">
+                        ⚡ Stress Test (10K items)
+                    </button>
+                    <button id="compression-test" class="bg-cyan-600 text-white px-4 py-3 rounded-lg hover:bg-cyan-700 transition-colors">
+                        🗜️ Compression Test
+                    </button>
+                </div>
+                <div id="performance-result" class="min-h-24"></div>
+            </div>
+        </section>
+
+        <!-- Metrics -->
+        <section class="bg-white rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Performance Metrics</h2>
+            <button id="metrics-button" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors mb-4">
+                Show Current Metrics
+            </button>
+            <pre id="metrics-output" class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto min-h-32"></pre>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-3">Adaptive Bloom Filter</h3>
+                    <p class="text-gray-400 text-sm">Production-ready bloom filter with enterprise features for JavaScript applications.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-3">Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://github.com/leonkalema/bloom" class="text-gray-400 hover:text-white transition-colors">GitHub Repository</a></li>
+                        <li><a href="https://www.npmjs.com/package/adaptive-bloom-filter" class="text-gray-400 hover:text-white transition-colors">NPM Package</a></li>
+                        <li><a href="https://github.com/leonkalema/bloom/blob/main/README.md" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-3">Features</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Auto-scaling & TTL expiration</li>
+                        <li>• Union & intersection operations</li>
+                        <li>• Memory pool & compression</li>
+                        <li>• Comprehensive test suite</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Leon Kalema. MIT License. Built with ❤️ for the JavaScript community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo will be loaded here - placeholder for now since we need to fix the module loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show loading message
+            document.getElementById('basic-result').innerHTML = `
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <p class="text-yellow-800">⚠️ Demo functionality coming soon! The interactive features are being updated to work with the new modular structure.</p>
+                    <p class="text-yellow-700 text-sm mt-2">Meanwhile, you can install and use the package via NPM: <code class="bg-yellow-100 px-2 py-1 rounded">npm install adaptive-bloom-filter</code></p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
