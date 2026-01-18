@@ -26,12 +26,13 @@ Real companies use bloom filters for:
 ```bash
 # Install via npm
 npm install adaptive-bloom-filter
+```
 
-# Or download directly
-curl -O https://raw.githubusercontent.com/leonkalema/bloom/main/src/index.js
+### Browser (CDN)
 
-# Or use CDN
-<script src="https://cdn.jsdelivr.net/gh/leonkalema/bloom@main/src/index.js"></script>
+```html
+<!-- Minified bundle (6.7KB, ~2KB gzipped) -->
+<script src="https://cdn.jsdelivr.net/gh/leonkalema/bloom@main/dist/bloom-filter.min.js"></script>
 ```
 
 ```javascript
