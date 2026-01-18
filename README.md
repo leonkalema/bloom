@@ -4,6 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/leonkalema/bloom.svg)](https://github.com/leonkalema/bloom/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/leonkalema/bloom.svg)](https://github.com/leonkalema/bloom/issues)
+[![Tests](https://github.com/leonkalema/bloom/actions/workflows/test.yml/badge.svg)](https://github.com/leonkalema/bloom/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/leonkalema/bloom/branch/main/graph/badge.svg)](https://codecov.io/gh/leonkalema/bloom)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.com/package/adaptive-bloom-filter)
 
 Stop wasting memory on massive lookup tables. This bloom filter tells you instantly if something is **definitely not there** or **might be there**. Perfect for web apps, databases, and real-time systems.
 

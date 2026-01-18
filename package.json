@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "Fast, memory-efficient bloom filter with adaptive compression and async operations for JavaScript",
   "main": "src/index.js",
+  "types": "index.d.ts",
   "keywords": [
     "bloom-filter",
     "probabilistic",
@@ -18,7 +19,15 @@
     "cache",
     "security",
     "ip-blocking",
-    "deduplication"
+    "deduplication",
+    "set-membership",
+    "spam-filter",
+    "rate-limiting",
+    "web-crawler",
+    "zero-dependencies",
+    "lightweight",
+    "fast",
+    "typescript"
   ],
   "author": "Leon Kalema",
   "license": "MIT",
@@ -36,13 +45,16 @@
   "browser": "src/index.js",
   "files": [
     "src/",
+    "index.d.ts",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "test": "node test-bloom-filter.js",
     "demo": "node -e \"const { AdaptiveBloomFilter } = require('./src/index.js'); const f = new AdaptiveBloomFilter(1000, 0.01); f.add('test'); console.log('Works:', f.check('test'));\"",
-    "benchmark": "node -e \"const { AdaptiveBloomFilter } = require('./src/index.js'); const f = new AdaptiveBloomFilter(100000, 0.01); console.time('Add 10k items'); for(let i=0; i<10000; i++) f.add('item-'+i); console.timeEnd('Add 10k items');\""
+    "benchmark": "node -e \"const { AdaptiveBloomFilter } = require('./src/index.js'); const f = new AdaptiveBloomFilter(100000, 0.01); console.time('Add 10k items'); for(let i=0; i<10000; i++) f.add('item-'+i); console.timeEnd('Add 10k items');\"",
+    "benchmark:compare": "node benchmark/comparison.js",
+    "coverage": "npx c8 --reporter=text --reporter=html node test-bloom-filter.js"
   },
   "devDependencies": {},
   "dependencies": {}

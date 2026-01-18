@@ -27,3 +27,45 @@ jobs:
     
     - name: Run benchmark
       run: npm run benchmark
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    
+    - name: Install coverage tool
+      run: npm install -g c8
+    
+    - name: Run tests with coverage
+      run: c8 --reporter=text --reporter=lcov node test-bloom-filter.js
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./coverage/lcov.info
+        fail_ci_if_error: false
+        verbose: true
+
+  types:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    
+    - name: Install TypeScript
+      run: npm install -g typescript
+    
+    - name: Validate TypeScript definitions
+      run: tsc --noEmit index.d.ts
